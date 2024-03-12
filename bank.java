@@ -55,14 +55,34 @@ class savingaccount extends bankaccount{
         limit=1000;
     }
 
+    public savingaccount() {
+
+    }
+
+    public void Withdraw(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter Amount to Withdraw: ");
+        int with = sc.nextInt();
+        if(with>0 && (account_balance+limit)>with){
+            account_balance -= with;
+            System.out.println("Updated Balance: " + account_balance);
+        }
+        else {
+            System.out.println("Cannot withdraw");
+        }
+    }
+
 }
 
 public class bank {
     public static void main(String[] args) {
         bankaccount b1 = new bankaccount();
+        savingaccount s1 = new savingaccount(5050,2000, "Yash");
         b1.getinfo();
         b1.dispinfo();
         b1.Deposite();
         b1.Withdraw();
+        s1.Withdraw();
+
     }
 }
